@@ -97,9 +97,8 @@ func RenameCrossDevice(oldpath, newpath string) (err error) {
 }
 
 func defaultTasksDir() string {
-	// assume all user home directories are all in same folder, i.e. the parent
-	// folder of the current user's home folder
-	return filepath.Dir(os.Getenv("HOME"))
+	// ~/tasks seems like a reasonable default for simple and docker engine
+	return filepath.Join(os.Getenv("HOME"), "tasks")
 }
 
 func rebootBetweenTasks() bool {
